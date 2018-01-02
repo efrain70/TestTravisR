@@ -1,17 +1,32 @@
 language: r
 sudo: false
-script: make bacon
 cache: packages
 
-r_packages:
-  - rmarkdown
+r:
+  - devel
 
 os:
   - linux
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master
+branches:
+  only:
+    - master
+
+# Be strict when checking our package, but don't build the manual
+warnings_are_errors: true
+# Note: can also add --no-build-vignettes to both
+r_build_args: --no-manual --no-resave-data
+r_check_args: --no-manual --as-cran
+
+# Email notifications
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+     
+# covr is not a dependency for the package. So, install it explicitly
+r_binary_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'covr::codecov()'
