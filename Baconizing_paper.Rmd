@@ -1,0 +1,7 @@
+input <- read.csv('somefile.csv')
+input_sums <- rowSums(input[,2:12])
+
+assert_that(noNA(input_sums))
+
+histogram(input_sums, main = "The sums of the inputs!")
+
