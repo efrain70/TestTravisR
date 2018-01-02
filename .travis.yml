@@ -3,12 +3,8 @@ sudo: false
 script: make bacon
 cache: packages
 
-r_github_packages:
-  - hadley/devtools@efa894ffa
-
 r_packages:
   - rmarkdown
-  - ggplot2
 
 os:
   - linux
