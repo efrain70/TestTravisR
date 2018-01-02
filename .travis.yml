@@ -4,17 +4,7 @@ script: make bacon
 cache: packages
 r_packages:
   - rmarkdown
-  - neotoma
-  - purrr
   - ggplot2
-  - plyr
-  - reshape2
-  - mgcv
-  - Bchron
-  - viridis
-  - dplyr
-  - readr
-  - gridExtra
 os:
   - linux
   - osx
